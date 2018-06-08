@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-import CloudKit
+import Foundation
+import CoreData
 
-public class Insight {
-    public init(container: CKContainer) {
-        Logging.log("Start with \(String(describing: container.containerIdentifier))")
-        Injection.shared.container = container
-        
-        Injection.shared.persistence.loadPersistentStores {
-            Logging.log("Insight persistence loaded")
-        }
-    }
+internal class SyncStatus: NSManagedObject {
+    @NSManaged var syncNeeded: Bool
+    @NSManaged var syncFailed: Bool
+    
+    @NSManaged var event: Event?
 }

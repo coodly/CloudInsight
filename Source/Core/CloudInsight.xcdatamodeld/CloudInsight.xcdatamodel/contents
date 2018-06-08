@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Event" representedClassName=".Event" syncable="YES">
+        <relationship name="syncStatus" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SyncStatus" inverseName="event" inverseEntity="SyncStatus" syncable="YES"/>
+    </entity>
+    <entity name="SyncStatus" representedClassName=".SyncStatus" syncable="YES">
+        <attribute name="syncFailed" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="syncNeeded" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="syncStatus" inverseEntity="Event" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Event" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="SyncStatus" positionX="-54" positionY="-9" width="128" height="90"/>
+    </elements>
+</model>

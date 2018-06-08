@@ -14,15 +14,23 @@
  * limitations under the License.
  */
 
+import Foundation
+import Puff
 import CloudKit
 
-public class Insight {
-    public init(container: CKContainer) {
-        Logging.log("Start with \(String(describing: container.containerIdentifier))")
-        Injection.shared.container = container
+internal extension Cloud {
+    internal struct Event: RemoteRecord {
+        var recordName: String?
+        var recordData: Data?
         
-        Injection.shared.persistence.loadPersistentStores {
-            Logging.log("Insight persistence loaded")
+        var parent: CKRecordID?
+        
+        static var recordType: String {
+            return "Event"
+        }
+        
+        mutating func loadFields(from record: CKRecord) -> Bool {
+            return true
         }
     }
 }

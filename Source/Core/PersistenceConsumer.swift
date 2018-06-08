@@ -14,15 +14,8 @@
  * limitations under the License.
  */
 
-import CloudKit
+import CoreDataPersistence
 
-public class Insight {
-    public init(container: CKContainer) {
-        Logging.log("Start with \(String(describing: container.containerIdentifier))")
-        Injection.shared.container = container
-        
-        Injection.shared.persistence.loadPersistentStores {
-            Logging.log("Insight persistence loaded")
-        }
-    }
+internal protocol PersistenceConsumer {
+    var persistence: CorePersistence! { get set }
 }

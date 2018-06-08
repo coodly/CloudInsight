@@ -14,15 +14,9 @@
  * limitations under the License.
  */
 
+import Foundation
 import CloudKit
 
-public class Insight {
-    public init(container: CKContainer) {
-        Logging.log("Start with \(String(describing: container.containerIdentifier))")
-        Injection.shared.container = container
-        
-        Injection.shared.persistence.loadPersistentStores {
-            Logging.log("Insight persistence loaded")
-        }
-    }
+internal protocol ContainerConsumer {
+    var insightContainer: CKContainer! { get set }
 }
