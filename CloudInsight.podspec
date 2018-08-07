@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |core|
     core.source_files = 'Source/Core/*.swift'
     core.dependency 'CoreDataPersistence', '0.1.6'
-    core.dependency 'Puff', '0.2.1'
+    core.dependency 'Puff', '0.2.2'
     
     core.resource_bundle = {'CloudInsight' => 'Source/Core/CloudInsight.xcdatamodeld'}
   end
