@@ -23,7 +23,7 @@ internal extension Cloud {
         var recordName: String?
         var recordData: Data?
         
-        var parent: CKRecordID?
+        var parent: CKRecord.ID?
         
         static var recordType: String {
             return "Event"
