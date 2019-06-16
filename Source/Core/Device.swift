@@ -18,5 +18,6 @@ import Foundation
 import CoreData
 
 internal class Device: NSManagedObject {
-    
+    @NSManaged var model: String?
+    @NSManaged var osVersion: String?
 }
