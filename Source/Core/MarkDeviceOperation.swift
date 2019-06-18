@@ -68,6 +68,10 @@ internal class MarkDeviceOperation: ConcurrentOperation, Dependencies, Injector 
     private func updateDetails(on device: Device) {
         Logging.log("Update details on \(device)")
         let changed = device.refresh(model: UIDevice.current.modelName, version: UIDevice.current.systemVersion)
+        if changed {
+            Logging.log("Device sync needed")
+            device.markSyncNeed()
+        }
     }
 }
 

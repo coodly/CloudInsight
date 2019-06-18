@@ -17,6 +17,6 @@
 import Foundation
 import CoreData
 
-internal class Event: NSManagedObject {    
+internal class Event: NSManagedObject, Synced {    
     @NSManaged var syncStatus: SyncStatus?
 }

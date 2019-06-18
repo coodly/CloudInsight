@@ -17,12 +17,14 @@
 import Foundation
 import CoreData
 
-internal class Device: NSManagedObject {
+internal class Device: NSManagedObject, Synced {
     @NSManaged var model: String?
     @NSManaged var osVersion: String?
     
     @NSManaged var recordName: String?
     @NSManaged var recordData: Data?
+    
+    @NSManaged var syncStatus: SyncStatus?
 }
 
 extension Device {
