@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Coodly LLC
+ * Copyright 2018 Coodly LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,24 +15,13 @@
  */
 
 import Foundation
-import CoreData
 
-internal class Device: NSManagedObject {
-    @NSManaged var model: String?
-    @NSManaged var osVersion: String?
-    
-    @NSManaged var recordName: String?
-    @NSManaged var recordData: Data?
-}
-
-extension Device {
-    internal func refresh(model: String, version: String) -> Bool {
-        Logging.log("Model: \(model), version: \(version)")
-        var changed = self.model != model || self.osVersion != version
+internal extension Array where Element: Operation {
+    mutating func add(operation: Element) {
+        if let previous = last {
+            operation.addDependency(previous)
+        }
         
-        self.model = model
-        self.osVersion = version
-        
-        return changed
+        append(operation)
     }
 }

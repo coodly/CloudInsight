@@ -22,4 +22,10 @@ extension NSManagedObjectContext {
     internal func device(with id: String) -> Device? {
         return fetchEntity(where: "recordName", hasValue: id)
     }
+    
+    internal func createDevice(with id: String) -> Device {
+        let device: Device = insertEntity()
+        device.recordName = id
+        return device
+    }
 }

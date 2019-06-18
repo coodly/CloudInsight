@@ -29,9 +29,12 @@ public class Insight: Injector, Dependencies {
     public func initialize() {
         inject(into: self)
         
-        let op = LoadPersistenceOperation()
-        inject(into: op)
+        var operations = [Operation]()
+        operations.add(operation: LoadPersistenceOperation())
+        operations.add(operation: MarkDeviceOperation(create: false))
         
-        queue.addOperation(op)
+        operations.forEach({ inject(into: $0) })
+        
+        queue.addOperations(operations, waitUntilFinished: false)
     }
 }

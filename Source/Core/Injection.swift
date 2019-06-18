@@ -63,5 +63,9 @@ internal class Injection {
         if var consumer = object as? InsightQueueConsumer {
             consumer.queue = queue
         }
+        
+        if var consumer = object as? KeychainConsumer {
+            consumer.keychain = keychain
+        }
     }
 }

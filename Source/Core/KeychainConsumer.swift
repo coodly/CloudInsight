@@ -15,24 +15,8 @@
  */
 
 import Foundation
-import CoreData
+import KeychainAccess
 
-internal class Device: NSManagedObject {
-    @NSManaged var model: String?
-    @NSManaged var osVersion: String?
-    
-    @NSManaged var recordName: String?
-    @NSManaged var recordData: Data?
-}
-
-extension Device {
-    internal func refresh(model: String, version: String) -> Bool {
-        Logging.log("Model: \(model), version: \(version)")
-        var changed = self.model != model || self.osVersion != version
-        
-        self.model = model
-        self.osVersion = version
-        
-        return changed
-    }
+internal protocol KeychainConsumer {
+    var keychain: Keychain! { get set }
 }
