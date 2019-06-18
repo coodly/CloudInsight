@@ -15,12 +15,18 @@
  */
 
 import Foundation
-import CoreData
+import KeychainAccess
 
-internal class Device: NSManagedObject {
-    @NSManaged var model: String?
-    @NSManaged var osVersion: String?
-    
-    @NSManaged var recordName: String?
-    @NSManaged var recordData: Data?
+private let DeviceIdKey = "DeviceIdKey"
+
+extension Keychain {
+    internal var deviceId: String {
+        if let existing = self[DeviceIdKey] {
+            return existing
+        }
+        
+        let created = UUID().uuidString
+        self[DeviceIdKey] = created
+        return created
+    }
 }

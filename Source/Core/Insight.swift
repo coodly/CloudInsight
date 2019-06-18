@@ -16,13 +16,22 @@
 
 import CloudKit
 
-public class Insight {
+private typealias Dependencies = InsightQueueConsumer
+
+public class Insight: Injector, Dependencies {
+    var queue: OperationQueue!
+    
     public init(container: CKContainer) {
         Logging.log("Start with \(String(describing: container.containerIdentifier))")
         Injection.shared.container = container
+    }
+    
+    public func initialize() {
+        inject(into: self)
         
-        Injection.shared.persistence.loadPersistentStores {
-            Logging.log("Insight persistence loaded")
-        }
+        let op = LoadPersistenceOperation()
+        inject(into: op)
+        
+        queue.addOperation(op)
     }
 }

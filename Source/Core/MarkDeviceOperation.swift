@@ -15,12 +15,7 @@
  */
 
 import Foundation
-import CoreData
 
-internal class Device: NSManagedObject {
-    @NSManaged var model: String?
-    @NSManaged var osVersion: String?
+internal class MarkDeviceOperation: ConcurrentOperation {
     
-    @NSManaged var recordName: String?
-    @NSManaged var recordData: Data?
 }

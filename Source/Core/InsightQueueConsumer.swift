@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Coodly LLC
+ * Copyright 2018 Coodly LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,7 @@
  */
 
 import Foundation
-import CoreData
 
-internal class Device: NSManagedObject {
-    @NSManaged var model: String?
-    @NSManaged var osVersion: String?
-    
-    @NSManaged var recordName: String?
-    @NSManaged var recordData: Data?
+internal protocol InsightQueueConsumer {
+    var queue: OperationQueue! { get set }
 }

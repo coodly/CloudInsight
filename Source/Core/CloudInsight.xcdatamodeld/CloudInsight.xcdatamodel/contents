@@ -3,6 +3,8 @@
     <entity name="Device" representedClassName=".Device" syncable="YES">
         <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="osVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName=".Event" syncable="YES">
         <relationship name="syncStatus" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SyncStatus" inverseName="event" inverseEntity="SyncStatus" syncable="YES"/>
@@ -15,6 +17,6 @@
     <elements>
         <element name="Event" positionX="-63" positionY="-18" width="128" height="60"/>
         <element name="SyncStatus" positionX="-54" positionY="-9" width="128" height="90"/>
-        <element name="Device" positionX="-63" positionY="18" width="128" height="75"/>
+        <element name="Device" positionX="-63" positionY="18" width="128" height="105"/>
     </elements>
 </model>

@@ -17,6 +17,7 @@
 import Foundation
 import CloudKit
 import CoreDataPersistence
+import KeychainAccess
 
 internal protocol Injector {
     func inject(into object: AnyObject)
@@ -32,8 +33,17 @@ internal class Injection {
     internal static let shared = Injection()
     
     internal var container: CKContainer?
+    private lazy var keychain = Keychain(service: "com.coodly.insight").accessibility(.alwaysThisDeviceOnly)
     
-    internal lazy var persistence: CorePersistence = {
+    private lazy var queue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.qualityOfService = .utility
+        queue.name = "Insight queue"
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
+    
+    private lazy var persistence: CorePersistence = {
         let frameworkBundle = Bundle(for: Insight.self)
         let modelBundleURL = frameworkBundle.url(forResource: "CloudInsight", withExtension: "bundle")!
         let modelBundle = Bundle(url: modelBundleURL)!
@@ -44,6 +54,14 @@ internal class Injection {
     fileprivate func inject(into object: AnyObject) {
         if var consumer = object as? ContainerConsumer {
             consumer.insightContainer = container!
+        }
+        
+        if var consumer = object as? PersistenceConsumer {
+            consumer.persistence = persistence
+        }
+        
+        if var consumer = object as? InsightQueueConsumer {
+            consumer.queue = queue
         }
     }
 }

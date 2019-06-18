@@ -16,11 +16,10 @@
 
 import Foundation
 import CoreData
+import CoreDataPersistence
 
-internal class Device: NSManagedObject {
-    @NSManaged var model: String?
-    @NSManaged var osVersion: String?
-    
-    @NSManaged var recordName: String?
-    @NSManaged var recordData: Data?
+extension NSManagedObjectContext {
+    internal func device(with id: String) -> Device? {
+        return fetchEntity(where: "recordName", hasValue: id)
+    }
 }

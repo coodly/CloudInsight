@@ -15,12 +15,17 @@
  */
 
 import Foundation
-import CoreData
+import CoreDataPersistence
 
-internal class Device: NSManagedObject {
-    @NSManaged var model: String?
-    @NSManaged var osVersion: String?
+private typealias Dependencies = PersistenceConsumer
+
+internal class LoadPersistenceOperation: ConcurrentOperation, Dependencies {
+    var persistence: CorePersistence!
     
-    @NSManaged var recordName: String?
-    @NSManaged var recordData: Data?
+    override func main() {
+        persistence.loadPersistentStores {
+            Logging.log("Insight persistence loaded")
+            self.finish()
+        }
+    }
 }
