@@ -15,10 +15,28 @@
  */
 
 import Foundation
+import CloudKit
+import Puff
 
-internal class RefreshDevicesOperation: ConcurrentOperation {
-    override func main() {
-        Logging.log("Refresh devices)")
-        finish()
+extension Cloud {
+    internal struct Device: RemoteRecord {
+        var recordName: String?
+        var recordData: Data?
+        
+        var parent: CKRecord.ID?
+        
+        static var recordType: CKRecord.RecordType {
+            return "Device"
+        }
+        
+        var model: String?
+        var osVersion: String?
+        
+        mutating func loadFields(from record: CKRecord) -> Bool {
+            model = record["model"] as? String
+            osVersion = record["osVersion"] as? String
+            
+            return true
+        }
     }
 }

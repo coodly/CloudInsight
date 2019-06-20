@@ -67,7 +67,7 @@ internal class MarkDeviceOperation: ConcurrentOperation, Dependencies, Injector 
         } else {
             Logging.log("Refresh devices")
             var operations = [Operation]()
-            operations.add(operation: RefreshDevicesOperation())
+            operations.add(operation: RefreshDeviceOperation(deviceId: deviceId))
             operations.add(operation: MarkDeviceOperation(create: true))
             
             operations.forEach({ inject(into: $0) })

@@ -28,4 +28,13 @@ extension NSManagedObjectContext {
         device.recordName = id
         return device
     }
+    
+    internal func refresh(device: Cloud.Device) {
+        let saved: Device = fetchEntity(where: "recordName", hasValue: device.recordName!) ?? insertEntity()
+        
+        saved.recordName = device.recordName
+        saved.recordData = device.recordData
+        saved.model = device.model
+        saved.osVersion = device.osVersion
+    }
 }
