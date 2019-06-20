@@ -31,6 +31,7 @@ public class Insight: Injector, Dependencies {
         
         var operations = [Operation]()
         operations.add(operation: LoadPersistenceOperation())
+        operations.add(operation: ResolveUserOperation())
         operations.add(operation: MarkDeviceOperation(create: false))
         
         operations.forEach({ inject(into: $0) })

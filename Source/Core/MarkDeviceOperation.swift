@@ -18,13 +18,15 @@ import Foundation
 import CoreDataPersistence
 import KeychainAccess
 import CoreData
+import CloudKit
 
-private typealias Dependencies = PersistenceConsumer & KeychainConsumer & InsightQueueConsumer
+private typealias Dependencies = PersistenceConsumer & KeychainConsumer & InsightQueueConsumer & UserRecordConsumer
 
 internal class MarkDeviceOperation: ConcurrentOperation, Dependencies, Injector {
     var persistence: CorePersistence!
     var keychain: Keychain!
     var queue: OperationQueue!
+    var userRecordID: CKRecord.ID?
     
     private let createMissingDevice: Bool
     internal init(create: Bool) {
@@ -32,6 +34,14 @@ internal class MarkDeviceOperation: ConcurrentOperation, Dependencies, Injector 
     }
     
     override func main() {
+        inject(into: self)
+        
+        guard userRecordID != nil else {
+            Logging.log("No user")
+            self.finish()
+            return
+        }
+        
         persistence.write() {
             context in
             

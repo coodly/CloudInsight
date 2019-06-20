@@ -51,6 +51,8 @@ internal class Injection {
         return CorePersistence(modelName: "CloudInsight", identifier: "com.coodly.insight", bundle: modelBundle, in: .cachesDirectory, wipeOnConflict: true)
     }()
     
+    internal var userRecordID: CKRecord.ID?
+    
     fileprivate func inject(into object: AnyObject) {
         if var consumer = object as? ContainerConsumer {
             consumer.insightContainer = container!
@@ -66,6 +68,10 @@ internal class Injection {
         
         if var consumer = object as? KeychainConsumer {
             consumer.keychain = keychain
+        }
+        
+        if var consumer = object as? UserRecordConsumer {
+            consumer.userRecordID = userRecordID
         }
     }
 }
