@@ -43,3 +43,14 @@ extension Cloud {
         }
     }
 }
+
+extension Device {
+    internal func toCloud() -> Cloud.Device? {
+        var cloud = Cloud.Device()
+        cloud.recordName = recordName
+        cloud.recordData = recordData
+        cloud.model = model
+        cloud.osVersion = osVersion
+        return cloud
+    }
+}

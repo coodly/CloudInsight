@@ -15,10 +15,64 @@
  */
 
 import Foundation
+import Puff
+import CloudKit
+import CoreDataPersistence
 
-internal class PushDeviceOperation: ConcurrentOperation {
-    override func main() {
+private typealias Dependencies = PersistenceConsumer & ContainerConsumer
+
+internal class PushDeviceOperation: CloudKitRequest<Cloud.Device>, Dependencies {
+    var persistence: CorePersistence!
+    var insightContainer: CKContainer! {
+        didSet {
+            container = insightContainer
+        }
+    }
+    
+    private var pushed = [String]()
+
+    override func performRequest() {
         Logging.log("Push device")
-        finish()
+        persistence.perform() {
+            context in
+            
+            let push = context.devicesNeedingPush().compactMap({ $0.toCloud() })
+            guard push.count > 0 else {
+                Logging.log("No devices to push")
+                self.finish()
+                return
+            }
+            
+            Logging.log("Pushing \(push)")
+            self.pushed = push.compactMap({ $0.recordName })
+            self.save(records: push, inDatabase: .public)
+        }
+    }
+    
+    override func handle(result: CloudResult<Cloud.Device>, completion: @escaping () -> ()) {
+        persistence.write() {
+            context in
+            
+            if let error = result.error {
+                Logging.log("Push devices error: \(error)")
+                
+                let failed = context.devices(with: self.pushed)
+                Logging.log("Mark push failure on \(failed.count) devices")
+                failed.forEach({ $0.markSyncFailed() })
+            } else {
+                let names = result.records.compactMap({ $0.recordName })
+                let pushed = context.devices(with: names)
+                for record in result.records {
+                    guard let device = pushed.first(where: { $0.recordName == record.recordName }) else {
+                        continue
+                    }
+                    
+                    device.recordData = record.recordData
+                    device.markSyncNeed(false)
+                }
+            }
+        }
+        
+        completion()
     }
 }

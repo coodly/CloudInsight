@@ -18,6 +18,12 @@ import Foundation
 import CoreData
 import CoreDataPersistence
 
+private extension NSPredicate {
+    static let statusNeedsSync = NSPredicate(format: "syncStatus.syncNeeded = YES")
+    static let statusNotFailed = NSPredicate(format: "syncStatus.syncFailed = NO")
+    static let needsSync = NSCompoundPredicate(andPredicateWithSubpredicates: [.statusNeedsSync, .statusNotFailed])
+}
+
 extension NSManagedObjectContext {
     internal func device(with id: String) -> Device? {
         return fetchEntity(where: "recordName", hasValue: id)
@@ -36,5 +42,14 @@ extension NSManagedObjectContext {
         saved.recordData = device.recordData
         saved.model = device.model
         saved.osVersion = device.osVersion
+    }
+    
+    internal func devicesNeedingPush() -> [Device] {
+        return fetch(predicate: .needsSync)
+    }
+    
+    internal func devices(with names: [String]) -> [Device] {
+        let predicate = NSPredicate(format: "recordName IN %@", names)
+        return fetch(predicate: predicate)
     }
 }
