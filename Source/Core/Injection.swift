@@ -34,6 +34,11 @@ internal class Injection {
     
     internal var container: CKContainer?
     private lazy var keychain = Keychain(service: "com.coodly.insight").accessibility(.alwaysThisDeviceOnly)
+    private lazy var push: DataPush = {
+        let push = DataPush()
+        inject(into: push)
+        return push
+    }()
     
     private lazy var queue: OperationQueue = {
         let queue = OperationQueue()
@@ -72,6 +77,10 @@ internal class Injection {
         
         if var consumer = object as? UserRecordConsumer {
             consumer.userRecordID = userRecordID
+        }
+        
+        if var consumer = object as? DataPushConsumer {
+            consumer.push = push
         }
     }
 }

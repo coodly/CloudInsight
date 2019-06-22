@@ -16,10 +16,11 @@
 
 import CloudKit
 
-private typealias Dependencies = InsightQueueConsumer
+private typealias Dependencies = InsightQueueConsumer & DataPushConsumer
 
 public class Insight: Injector, Dependencies {
     var queue: OperationQueue!
+    var push: DataPush!
     
     public init(container: CKContainer) {
         Logging.log("Start with \(String(describing: container.containerIdentifier))")
@@ -32,7 +33,12 @@ public class Insight: Injector, Dependencies {
         var operations = [Operation]()
         operations.add(operation: LoadPersistenceOperation())
         operations.add(operation: ResolveUserOperation())
+        operations.add(operation: ResetFauluresOperation())
         operations.add(operation: MarkDeviceOperation(create: false))
+        let loadPush = BlockOperation() {
+            self.push.load()
+        }
+        operations.add(operation: loadPush)
         
         operations.forEach({ inject(into: $0) })
         

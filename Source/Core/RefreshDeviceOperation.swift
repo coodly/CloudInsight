@@ -52,5 +52,7 @@ internal class RefreshDeviceOperation: CloudKitRequest<Cloud.Device>, Dependenci
                 context.refresh(device: device)
             }
         }
+        
+        completion()
     }
 }

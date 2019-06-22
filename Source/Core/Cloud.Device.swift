@@ -31,6 +31,9 @@ extension Cloud {
         
         var model: String?
         var osVersion: String?
+        var appIdentifier: String? {
+            return Bundle.main.bundleIdentifier
+        }
         
         mutating func loadFields(from record: CKRecord) -> Bool {
             model = record["model"] as? String

@@ -15,22 +15,7 @@
  */
 
 import Foundation
-import Puff
-import CloudKit
 
-extension Cloud {
-    internal struct Event: RemoteRecord {
-        var recordName: String?
-        var recordData: Data?
-        
-        var parent: CKRecord.ID?
-        
-        static var recordType: String {
-            return "Event"
-        }
-        
-        mutating func loadFields(from record: CKRecord) -> Bool {
-            return true
-        }
-    }
+internal protocol DataPushConsumer {
+    var push: DataPush! { get set }
 }
