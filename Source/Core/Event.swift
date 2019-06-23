@@ -17,6 +17,12 @@
 import Foundation
 import CoreData
 
-internal class Event: NSManagedObject, Synced {    
+internal class Event: NSManagedObject, Synced {
+    @NSManaged var recordName: String?
+    @NSManaged var time: Date?
+    @NSManaged var name: String?
+    @NSManaged var values: String?
+    @NSManaged var device: String?
+    
     @NSManaged var syncStatus: SyncStatus?
 }
