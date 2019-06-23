@@ -40,13 +40,44 @@ internal class Injection {
         return push
     }()
     
+    private var queueObservation: NSKeyValueObservation?
     private lazy var queue: OperationQueue = {
         let queue = OperationQueue()
         queue.qualityOfService = .utility
         queue.name = "Insight queue"
         queue.maxConcurrentOperationCount = 1
+        queueObservation = queue.observe(\.operationCount) {
+            localQueue, _ in
+            
+            self.pendingOperations = localQueue.operationCount
+        }
         return queue
     }()
+    private var pendingOperations = 0 {
+        didSet {
+            if oldValue == 0, pendingOperations > 0 {
+                self.backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask()
+            } else if pendingOperations == 0 {
+                self.backgroundTaskIdentifier = nil
+            }
+        }
+    }
+    private var backgroundTaskIdentifier: UIBackgroundTaskIdentifier? {
+        didSet {
+            if let value = backgroundTaskIdentifier {
+                Logging.log("Insight: start task: \(value)")
+            }
+
+            guard let previous = oldValue else {
+                return
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+                Logging.log("Insight: end task: \(previous)")
+                UIApplication.shared.endBackgroundTask(previous)
+            }
+        }
+    }
     
     private lazy var persistence: CorePersistence = {
         let frameworkBundle = Bundle(for: Insight.self)
