@@ -15,10 +15,55 @@
  */
 
 import Foundation
+import CoreDataPersistence
+import Puff
+import CloudKit
 
-internal class PushEventsOperation: ConcurrentOperation {
-    override func main() {
+private typealias Dependencies = PersistenceConsumer & ContainerConsumer
+
+internal class PushEventsOperation: CloudKitRequest<Cloud.Event>, Dependencies {
+    var persistence: CorePersistence!
+    var insightContainer: CKContainer! {
+        didSet {
+            container = insightContainer
+        }
+    }
+    private var pushed = [String]()
+
+    override func performRequest() {
         Logging.log("Push events")
-        finish()
+        persistence.perform() {
+            context in
+            
+            let events = context.eventsNeedingPush().map({ $0.toCloud() })
+            guard events.count > 0 else {
+                Logging.log("No events to push")
+                self.finish()
+                return
+            }
+            
+            Logging.log("Pushing \(events)")
+            self.pushed = events.compactMap({ $0.recordName })
+            self.save(records: events, inDatabase: .public)
+        }
+    }
+    
+    override func handle(result: CloudResult<Cloud.Event>, completion: @escaping () -> ()) {
+        persistence.write() {
+            context in
+            
+            let saved = result.records.compactMap({ $0.recordName })
+            context.remove(events: saved)
+            
+            let notSaved = self.pushed.filter({ !saved.contains($0) })
+            guard notSaved.count > 0 else {
+                return
+            }
+            
+            Logging.log("Mark failure on \(notSaved.count) events")
+            context.markFailure(on: notSaved)
+        }
+        
+        completion()
     }
 }

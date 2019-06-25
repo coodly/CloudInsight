@@ -29,8 +29,25 @@ extension Cloud {
             return "Event"
         }
         
+        var device: String?
+        var name: String?
+        var time: Date?
+        var values: String?
+        
         mutating func loadFields(from record: CKRecord) -> Bool {
             return true
         }
+    }
+}
+
+extension Event {
+    internal func toCloud() -> Cloud.Event {
+        var event = Cloud.Event()
+        event.recordName = recordName
+        event.device = device
+        event.time = time
+        event.name = name
+        event.values = values
+        return event
     }
 }

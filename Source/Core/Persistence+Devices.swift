@@ -18,10 +18,10 @@ import Foundation
 import CoreData
 import CoreDataPersistence
 
-private extension NSPredicate {
-    static let statusNeedsSync = NSPredicate(format: "syncStatus.syncNeeded = YES")
-    static let statusNotFailed = NSPredicate(format: "syncStatus.syncFailed = NO")
-    static let needsSync = NSCompoundPredicate(andPredicateWithSubpredicates: [.statusNeedsSync, .statusNotFailed])
+extension NSPredicate {
+    private static let statusNeedsSync = NSPredicate(format: "syncStatus.syncNeeded = YES")
+    private static let statusNotFailed = NSPredicate(format: "syncStatus.syncFailed = NO")
+    internal static let needsSync = NSCompoundPredicate(andPredicateWithSubpredicates: [.statusNeedsSync, .statusNotFailed])
 }
 
 extension NSManagedObjectContext {
