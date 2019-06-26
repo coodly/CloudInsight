@@ -28,6 +28,14 @@ public class Insight: Injector, Dependencies {
     var push: DataPush!
     
     private var sessionID = UUID()
+    private lazy var appVersion: String = {
+        guard let dict = Bundle.main.infoDictionary,
+            let version = dict["CFBundleShortVersionString"] as? String,
+            let build = dict["CFBundleVersion"] as? String else {
+            return "-"
+        }
+        return "\(version)(\(build))"
+    }()
     
     public init(container: CKContainer) {
         Logging.log("Start with \(String(describing: container.containerIdentifier))")
@@ -57,7 +65,7 @@ public class Insight: Injector, Dependencies {
     
     @objc fileprivate func didBecomeActive() {
         Logging.log("Did become active")
-        log(event: "insight.session.start", values: ["id": sessionID.uuidString])
+        log(event: "insight.session.start", values: ["id": sessionID.uuidString, "appVersion": appVersion])
     }
 
     @objc fileprivate func didEnterBackground() {
