@@ -19,7 +19,7 @@ import Puff
 import CloudKit
 import CoreDataPersistence
 
-private typealias Dependencies = PersistenceConsumer & ContainerConsumer
+private typealias Dependencies = PersistenceConsumer & ContainerConsumer & UserRecordConsumer
 
 internal class PushDeviceOperation: CloudKitRequest<Cloud.Device>, Dependencies {
     var persistence: CorePersistence!
@@ -28,11 +28,19 @@ internal class PushDeviceOperation: CloudKitRequest<Cloud.Device>, Dependencies 
             container = insightContainer
         }
     }
+    var userRecordID: CKRecord.ID?
     
     private var pushed = [String]()
 
     override func performRequest() {
         Logging.log("Push device")
+        
+        guard userRecordID != nil else {
+            Logging.log("No user record")
+            self.finish()
+            return
+        }
+        
         persistence.perform() {
             context in
             
