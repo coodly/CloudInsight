@@ -71,6 +71,22 @@ internal class PushEventsOperation: CloudKitRequest<Cloud.Event>, Dependencies {
             
             Logging.log("Mark failure on \(notSaved.count) events")
             context.markFailure(on: notSaved)
+            
+            guard let cloudError = result.error as? CKError, let partial = cloudError.partialErrorsByItemID as? [CKRecord.ID: CKError] else {
+                return
+            }
+            
+            var conflicted = [String]()
+            for (name, error) in partial {
+                guard error.code == CKError.Code.serverRecordChanged else {
+                    Logging.log("Unknown error \(error.code) on \(name.recordName)")
+                    continue
+                }
+            
+                conflicted.append(name.recordName)
+            }
+            Logging.log("Remove conflict events: \(conflicted)")
+            context.remove(events: conflicted)
         }
         
         completion()
