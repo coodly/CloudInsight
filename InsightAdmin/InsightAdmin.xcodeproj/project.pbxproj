@@ -3,11 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		09AF86E140DCEE9A39ACC125 /* Pods_InsightAdmin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C85E06A07944D1CCC8EE2F47 /* Pods_InsightAdmin.framework */; };
+		A759B7A9233E55E900FE40A6 /* InsightCore.h in Headers */ = {isa = PBXBuildFile; fileRef = A759B7A7233E55E900FE40A6 /* InsightCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A759B7AC233E55E900FE40A6 /* InsightCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A759B7A5233E55E900FE40A6 /* InsightCore.framework */; };
+		A759B7AD233E55E900FE40A6 /* InsightCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A759B7A5233E55E900FE40A6 /* InsightCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A759B7BB233E55F700FE40A6 /* InsightUI.h in Headers */ = {isa = PBXBuildFile; fileRef = A759B7B9233E55F700FE40A6 /* InsightUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A759B7BE233E55F800FE40A6 /* InsightUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A759B7B7233E55F700FE40A6 /* InsightUI.framework */; };
+		A759B7BF233E55F800FE40A6 /* InsightUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A759B7B7233E55F700FE40A6 /* InsightUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A759B7C7233E568F00FE40A6 /* InsightCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A759B7A5233E55E900FE40A6 /* InsightCore.framework */; };
 		A77DAAF7233E490300EB109F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DAAF6233E490300EB109F /* AppDelegate.swift */; };
 		A77DAAF9233E490300EB109F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DAAF8233E490300EB109F /* SceneDelegate.swift */; };
 		A77DAAFB233E490300EB109F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DAAFA233E490300EB109F /* ContentView.swift */; };
@@ -16,7 +23,52 @@
 		A77DAB03233E490400EB109F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A77DAB01233E490400EB109F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A759B7AA233E55E900FE40A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A77DAAEB233E490300EB109F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A759B7A4233E55E900FE40A6;
+			remoteInfo = InsightCore;
+		};
+		A759B7BC233E55F800FE40A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A77DAAEB233E490300EB109F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A759B7B6233E55F700FE40A6;
+			remoteInfo = InsightUI;
+		};
+		A759B7C9233E568F00FE40A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A77DAAEB233E490300EB109F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A759B7A4233E55E900FE40A6;
+			remoteInfo = InsightCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A759B7AE233E55EA00FE40A6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A759B7AD233E55E900FE40A6 /* InsightCore.framework in Embed Frameworks */,
+				A759B7BF233E55F800FE40A6 /* InsightUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A759B7A5233E55E900FE40A6 /* InsightCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InsightCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A759B7A7233E55E900FE40A6 /* InsightCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsightCore.h; sourceTree = "<group>"; };
+		A759B7A8233E55E900FE40A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A759B7B7233E55F700FE40A6 /* InsightUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InsightUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A759B7B9233E55F700FE40A6 /* InsightUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsightUI.h; sourceTree = "<group>"; };
+		A759B7BA233E55F700FE40A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A77DAAF3233E490300EB109F /* InsightAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InsightAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77DAAF6233E490300EB109F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A77DAAF8233E490300EB109F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,10 +83,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A759B7A2233E55E900FE40A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A759B7B4233E55F700FE40A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A759B7C7233E568F00FE40A6 /* InsightCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A77DAAF0233E490300EB109F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A759B7BE233E55F800FE40A6 /* InsightUI.framework in Frameworks */,
+				A759B7AC233E55E900FE40A6 /* InsightCore.framework in Frameworks */,
 				09AF86E140DCEE9A39ACC125 /* Pods_InsightAdmin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,17 +117,52 @@
 				D420F83FDDA4374513C81987 /* Pods-InsightAdmin.debug.xcconfig */,
 				D0CC618372948FE83515823F /* Pods-InsightAdmin.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A759B7A6233E55E900FE40A6 /* InsightCore */ = {
+			isa = PBXGroup;
+			children = (
+				A759B7C4233E562A00FE40A6 /* Supporting files */,
+			);
+			path = InsightCore;
+			sourceTree = "<group>";
+		};
+		A759B7B8233E55F700FE40A6 /* InsightUI */ = {
+			isa = PBXGroup;
+			children = (
+				A759B7C3233E561C00FE40A6 /* Supporting files */,
+			);
+			path = InsightUI;
+			sourceTree = "<group>";
+		};
+		A759B7C3233E561C00FE40A6 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				A759B7B9233E55F700FE40A6 /* InsightUI.h */,
+				A759B7BA233E55F700FE40A6 /* Info.plist */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		A759B7C4233E562A00FE40A6 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				A759B7A7233E55E900FE40A6 /* InsightCore.h */,
+				A759B7A8233E55E900FE40A6 /* Info.plist */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 		A77DAAEA233E490300EB109F = {
 			isa = PBXGroup;
 			children = (
-				A77DAAF5233E490300EB109F /* InsightAdmin */,
-				A77DAAF4233E490300EB109F /* Products */,
-				9C2A01BF953ECF80E686C05B /* Pods */,
 				BA3979BAFECCC252AED2174E /* Frameworks */,
+				A77DAAF5233E490300EB109F /* InsightAdmin */,
+				A759B7A6233E55E900FE40A6 /* InsightCore */,
+				A759B7B8233E55F700FE40A6 /* InsightUI */,
+				9C2A01BF953ECF80E686C05B /* Pods */,
+				A77DAAF4233E490300EB109F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				A77DAAF3233E490300EB109F /* InsightAdmin.app */,
+				A759B7A5233E55E900FE40A6 /* InsightCore.framework */,
+				A759B7B7233E55F700FE40A6 /* InsightUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,7 +208,63 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		A759B7A0233E55E900FE40A6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A759B7A9233E55E900FE40A6 /* InsightCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A759B7B2233E55F700FE40A6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A759B7BB233E55F700FE40A6 /* InsightUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		A759B7A4233E55E900FE40A6 /* InsightCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A759B7B1233E55EA00FE40A6 /* Build configuration list for PBXNativeTarget "InsightCore" */;
+			buildPhases = (
+				A759B7A0233E55E900FE40A6 /* Headers */,
+				A759B7A1233E55E900FE40A6 /* Sources */,
+				A759B7A2233E55E900FE40A6 /* Frameworks */,
+				A759B7A3233E55E900FE40A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InsightCore;
+			productName = InsightCore;
+			productReference = A759B7A5233E55E900FE40A6 /* InsightCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A759B7B6233E55F700FE40A6 /* InsightUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A759B7C0233E55F800FE40A6 /* Build configuration list for PBXNativeTarget "InsightUI" */;
+			buildPhases = (
+				A759B7B2233E55F700FE40A6 /* Headers */,
+				A759B7B3233E55F700FE40A6 /* Sources */,
+				A759B7B4233E55F700FE40A6 /* Frameworks */,
+				A759B7B5233E55F700FE40A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A759B7CA233E568F00FE40A6 /* PBXTargetDependency */,
+			);
+			name = InsightUI;
+			productName = InsightUI;
+			productReference = A759B7B7233E55F700FE40A6 /* InsightUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		A77DAAF2233E490300EB109F /* InsightAdmin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A77DAB07233E490400EB109F /* Build configuration list for PBXNativeTarget "InsightAdmin" */;
@@ -112,10 +274,13 @@
 				A77DAAF0233E490300EB109F /* Frameworks */,
 				A77DAAF1233E490300EB109F /* Resources */,
 				96700A47DE12B1B3157E0302 /* [CP] Embed Pods Frameworks */,
+				A759B7AE233E55EA00FE40A6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A759B7AB233E55E900FE40A6 /* PBXTargetDependency */,
+				A759B7BD233E55F800FE40A6 /* PBXTargetDependency */,
 			);
 			name = InsightAdmin;
 			productName = InsightAdmin;
@@ -132,6 +297,13 @@
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Coodly OU";
 				TargetAttributes = {
+					A759B7A4233E55E900FE40A6 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					A759B7B6233E55F700FE40A6 = {
+						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
+					};
 					A77DAAF2233E490300EB109F = {
 						CreatedOnToolsVersion = 11.1;
 					};
@@ -151,11 +323,27 @@
 			projectRoot = "";
 			targets = (
 				A77DAAF2233E490300EB109F /* InsightAdmin */,
+				A759B7A4233E55E900FE40A6 /* InsightCore */,
+				A759B7B6233E55F700FE40A6 /* InsightUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A759B7A3233E55E900FE40A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A759B7B5233E55F700FE40A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A77DAAF1233E490300EB109F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,6 +399,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A759B7A1233E55E900FE40A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A759B7B3233E55F700FE40A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A77DAAEF233E490300EB109F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +424,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A759B7AB233E55E900FE40A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A759B7A4233E55E900FE40A6 /* InsightCore */;
+			targetProxy = A759B7AA233E55E900FE40A6 /* PBXContainerItemProxy */;
+		};
+		A759B7BD233E55F800FE40A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A759B7B6233E55F700FE40A6 /* InsightUI */;
+			targetProxy = A759B7BC233E55F800FE40A6 /* PBXContainerItemProxy */;
+		};
+		A759B7CA233E568F00FE40A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A759B7A4233E55E900FE40A6 /* InsightCore */;
+			targetProxy = A759B7C9233E568F00FE40A6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A77DAB01233E490400EB109F /* LaunchScreen.storyboard */ = {
@@ -235,6 +455,121 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A759B7AF233E55EA00FE40A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_TEAM = 5T8DRBFCBP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "InsightCore/Supporting files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coodly.core;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A759B7B0233E55EA00FE40A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_TEAM = 5T8DRBFCBP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "InsightCore/Supporting files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coodly.core;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A759B7C1233E55F800FE40A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5T8DRBFCBP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "InsightUI/Supporting files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coodly.ui;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A759B7C2233E55F800FE40A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5T8DRBFCBP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "InsightUI/Supporting files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.coodly.ui;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		A77DAB05233E490400EB109F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -394,6 +729,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A759B7B1233E55EA00FE40A6 /* Build configuration list for PBXNativeTarget "InsightCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A759B7AF233E55EA00FE40A6 /* Debug */,
+				A759B7B0233E55EA00FE40A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A759B7C0233E55F800FE40A6 /* Build configuration list for PBXNativeTarget "InsightUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A759B7C1233E55F800FE40A6 /* Debug */,
+				A759B7C2233E55F800FE40A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A77DAAEE233E490300EB109F /* Build configuration list for PBXProject "InsightAdmin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
