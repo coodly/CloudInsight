@@ -14,6 +14,60 @@
  * limitations under the License.
  */
 
-public extension Insight {
+import CloudKit
+
+private extension Selector {
+    static let didBecomeActive = #selector(Insight.didBecomeActive)
+    static let didEnterBackground = #selector(Insight.didEnterBackground)
+}
+
+
+public protocol InsightClient {
+    func loadEventsPush()
+    func log(event: String, values: [String: String])
+}
+
+extension Insight: InsightClient {    
+    public static func client(for container: CKContainer) -> InsightClient {
+        return Insight(container: container)
+    }
     
+    public func loadEventsPush() {
+        inject(into: self)
+        
+        var operations = [Operation]()
+        operations.add(operation: LoadPersistenceOperation())
+        operations.add(operation: ResolveUserOperation())
+        operations.add(operation: ResetFauluresOperation())
+        operations.add(operation: MarkDeviceOperation(create: false))
+        let loadPush = BlockOperation() {
+            self.push.load()
+        }
+        operations.add(operation: loadPush)
+        
+        operations.forEach({ inject(into: $0) })
+        
+        queue.addOperations(operations, waitUntilFinished: false)
+        
+        NotificationCenter.default.addObserver(self, selector: .didBecomeActive, name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: .didEnterBackground, name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    @objc fileprivate func didBecomeActive() {
+        Logging.log("Did become active")
+        log(event: "insight.session.start", values: ["id": sessionID.uuidString, "appVersion": appVersion])
+    }
+
+    @objc fileprivate func didEnterBackground() {
+        Logging.log("Did enter background")
+        log(event: "insight.session.end", values: ["id": sessionID.uuidString])
+        sessionID = UUID()
+    }
+    
+    public func log(event: String, values: [String: String] = [:]) {
+        let op = LogEventOperation(name: event, values: values)
+        inject(into: op)
+        queue.addOperation(op)
+    }
+
 }
