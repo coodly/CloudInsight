@@ -26,6 +26,12 @@ Pod::Spec.new do |s|
     client.source_files = 'Source/Client'
     client.dependency 'CloudInsight/Core'
   end
+  
+  s.subspec 'Reporting' do |rep|
+    rep.ios.deployment_target = '13.1'
+    rep.source_files = 'Source/Reporting'
+    rep.dependency 'CloudInsight/Core'
+  end
 
   #s.subspec 'Admin' do |admin|
   #  admin.source_files = "Source/Admin"

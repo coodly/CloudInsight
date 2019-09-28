@@ -15,19 +15,26 @@
 */
 
 import Foundation
+import SWLogger
 import CloudInsight
-import CloudKit
 
-public class Application {
-    public static let shared = Application()
-    
-    private lazy var reporting = Insight.reporting(on: CKContainer(identifier: "iCloud.com.coodly.insight"))
-
-    private init() {
-        Log.enable()
-    }
-    
-    public func initialize(completion: @escaping (() -> Void)) {
-        reporting.load(completion: completion)
+internal class Log {
+    internal static func enable() {
+        SWLogger.Log.level = .debug
+        SWLogger.Log.add(output: ConsoleOutput())
+        SWLogger.Log.add(output: FileOutput())
+        
+        CloudInsight.Logging.set(logger: InsightLogger())
     }
 }
+
+
+private class InsightLogger: CloudInsight.Logger {
+    private lazy var log = SWLogger.Logging(name: "Insight")
+    
+    func log<T>(_ object: T, file: String, function: String, line: Int) {
+        log.debug(object, file: file, function: function, line: line)
+    }
+}
+
+

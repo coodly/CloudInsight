@@ -53,7 +53,7 @@ internal class ResolveUserOperation: ConcurrentOperation, Dependencies {
 
             if let error = error {
                 Logging.log("Fetch user record error \(error)")
-                self.finish(true)
+                self.finish(error)
             } else {
                 Injection.shared.userRecordID = recordId
                 self.finish()
