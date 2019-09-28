@@ -17,9 +17,9 @@
 import Foundation
 import CoreData
 
-internal class Application: NSManagedObject {
+internal class User: NSManagedObject {
     @NSManaged var identifier: String
     
     @NSManaged var devices: Set<Device>?
-    @NSManaged var users: Set<User>?
+    @NSManaged var application: Application?
 }

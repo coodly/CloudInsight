@@ -17,6 +17,7 @@
 import Foundation
 import CoreData
 import CoreDataPersistence
+import CloudKit
 
 extension NSPredicate {
     private static let statusNeedsSync = NSPredicate(format: "syncStatus.syncNeeded = YES")
@@ -57,6 +58,9 @@ extension NSManagedObjectContext {
         let appIdentifiers = Set(devices.compactMap({ $0.appIdentifier }))
         let applications = self.applications(with: appIdentifiers)
         
+        let userIdentifiers = Set(devices.compactMap({ $0.createdBy?.recordName }))
+        let users = self.users(with: userIdentifiers)
+        
         let existingDevices = self.devices(with: devices.compactMap({ $0.recordName }))
         for device in devices {
             let saved: Device
@@ -67,9 +71,14 @@ extension NSManagedObjectContext {
                 saved.recordName = device.recordName
             }
             
-            saved.application = applications.first(where: { $0.identifier == device.appIdentifier })
+            let application = applications.first(where: { $0.identifier == device.appIdentifier })
+            saved.application = application
             saved.model = device.model
             saved.osVersion = device.osVersion
+            
+            let user = users.first(where: { $0.identifier == device.createdBy?.recordName })
+            saved.user = user
+            user?.application = application
         }
     }
 }
