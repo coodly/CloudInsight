@@ -17,18 +17,57 @@
 import Foundation
 import CloudKit
 import Puff
+import CoreDataPersistence
+import CoreData
 
-private typealias Dependencies = ContainerConsumer
+private typealias Dependencies = ContainerConsumer & PersistenceConsumer
 
-internal class PullUpdatesOperation<T: RemoteRecord>: CloudKitRequest<T>, Dependencies {
+internal class PullUpdatesOperation<T: RemoteRecord & Timestamped>: CloudKitRequest<T>, Dependencies {
     var insightContainer: CKContainer! {
         didSet {
             self.container = insightContainer
         }
     }
+    var persistence: CorePersistence!
     
     override func performRequest() {
-        Logging.log("Pull updates in \(String(describing: T.self))")
-        self.finish()
+        persistence.performInBackground() {
+            context in
+            
+            Logging.log("Pull updates for \(String(describing: T.self))")
+            let lastKnown = context.lastKnownTime(for: T.self)
+            Logging.log("Pull updates after \(lastKnown)")
+
+            let sort = NSSortDescriptor(key: "modificationDate", ascending: true)
+            let predicate = NSPredicate(format: "modificationDate >= %@", lastKnown as NSDate)
+            
+            self.fetch(predicate: predicate, sort: [sort], pullAll: true, inDatabase: .public)
+        }
+    }
+    
+    override func handle(result: CloudResult<T>, completion: @escaping () -> ()) {
+        let save: ContextClosure = {
+            context in
+            
+            if let error = result.error {
+                Logging.log("Load error: \(error)")
+            } else {
+                self.load(records: result.records, into: context)
+                
+                guard let lastKnown = result.records.last?.modifiedAt else {
+                    return
+                }
+                
+                Logging.log("Mark last known to \(lastKnown)")
+                context.markLastKnow(time: lastKnown, for: T.self)
+            }
+        }
+        
+        persistence.performInBackground(task: save, completion: completion)
+    }
+    
+    internal func load(records: [T], into context: NSManagedObjectContext) {
+        Logging.log("Load \(records.count) records")
+        dump(records)
     }
 }

@@ -32,10 +32,16 @@ extension Cloud {
         var model: String?
         var osVersion: String?
         var appIdentifier: String?
+        var modifiedAt: Date?
+        var createdBy: CKRecord.ID?
         
         mutating func loadFields(from record: CKRecord) -> Bool {
             model = record["model"] as? String
             osVersion = record["osVersion"] as? String
+            appIdentifier = record["appIdentifier"] as? String
+            
+            modifiedAt = record.modificationDate
+            createdBy = record.creatorUserRecordID
             
             return true
         }
@@ -51,5 +57,12 @@ extension Device {
         cloud.osVersion = osVersion
         cloud.appIdentifier = Bundle.main.bundleIdentifier
         return cloud
+    }
+}
+
+
+extension Cloud.Device: Timestamped {
+    static var lastKnownKey: String {
+        return "last-known-for-\(recordType)"
     }
 }

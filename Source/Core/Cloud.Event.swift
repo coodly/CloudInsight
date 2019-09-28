@@ -33,8 +33,18 @@ extension Cloud {
         var name: String?
         var time: Date?
         var values: String?
+        var modifiedAt: Date?
+        var createdBy: CKRecord.ID?
         
         mutating func loadFields(from record: CKRecord) -> Bool {
+            device = record["device"] as? String
+            name = record["name"] as? String
+            time = record["time"] as? Date
+            values = record["values"] as? String
+            
+            modifiedAt = record.modificationDate
+            createdBy = record.creatorUserRecordID
+            
             return true
         }
     }
@@ -49,5 +59,11 @@ extension Event {
         event.name = name
         event.values = values
         return event
+    }
+}
+
+extension Cloud.Event: Timestamped {
+    static var lastKnownKey: String {
+        return "last-known-for-\(recordType)"
     }
 }
