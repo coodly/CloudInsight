@@ -17,8 +17,8 @@
 import Foundation
 import CoreData
 
-internal class PullDevicesOperation: PullUpdatesOperation<Cloud.Device> {
-    override func load(records: [Cloud.Device], into context: NSManagedObjectContext) {
-        context.load(devices: records)
-    }
+internal class Application: NSManagedObject {
+    @NSManaged var identifier: String
+    
+    @NSManaged var devices: Set<Device>?
 }

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Application" representedClassName=".Application" syncable="YES">
+        <attribute name="identifier" attributeType="String"/>
+        <relationship name="devices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Device" inverseName="application" inverseEntity="Device"/>
+    </entity>
     <entity name="Device" representedClassName=".Device" syncable="YES">
         <attribute name="model" optional="YES" attributeType="String"/>
         <attribute name="osVersion" optional="YES" attributeType="String"/>
         <attribute name="recordData" optional="YES" attributeType="Binary"/>
         <attribute name="recordName" optional="YES" attributeType="String"/>
+        <relationship name="application" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Application" inverseName="devices" inverseEntity="Application"/>
         <relationship name="syncStatus" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SyncStatus" inverseName="device" inverseEntity="SyncStatus"/>
     </entity>
     <entity name="Event" representedClassName=".Event" syncable="YES">
@@ -26,9 +31,10 @@
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="syncStatus" inverseEntity="Event"/>
     </entity>
     <elements>
-        <element name="Device" positionX="-63" positionY="18" width="128" height="120"/>
+        <element name="Application" positionX="-45" positionY="54" width="128" height="73"/>
+        <element name="Device" positionX="-63" positionY="18" width="128" height="133"/>
         <element name="Event" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="SyncStatus" positionX="-54" positionY="-9" width="128" height="105"/>
         <element name="Setting" positionX="-54" positionY="45" width="128" height="73"/>
+        <element name="SyncStatus" positionX="-54" positionY="-9" width="128" height="105"/>
     </elements>
 </model>

@@ -52,4 +52,24 @@ extension NSManagedObjectContext {
         let predicate = NSPredicate(format: "recordName IN %@", names)
         return fetch(predicate: predicate)
     }
+    
+    internal func load(devices: [Cloud.Device]) {
+        let appIdentifiers = Set(devices.compactMap({ $0.appIdentifier }))
+        let applications = self.applications(with: appIdentifiers)
+        
+        let existingDevices = self.devices(with: devices.compactMap({ $0.recordName }))
+        for device in devices {
+            let saved: Device
+            if let existing = existingDevices.first(where: { $0.recordName == device.recordName }) {
+                saved = existing
+            } else {
+                saved = insertEntity()
+                saved.recordName = device.recordName
+            }
+            
+            saved.application = applications.first(where: { $0.identifier == device.appIdentifier })
+            saved.model = device.model
+            saved.osVersion = device.osVersion
+        }
+    }
 }

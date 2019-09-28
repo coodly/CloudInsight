@@ -68,6 +68,5 @@ internal class PullUpdatesOperation<T: RemoteRecord & Timestamped>: CloudKitRequ
     
     internal func load(records: [T], into context: NSManagedObjectContext) {
         Logging.log("Load \(records.count) records")
-        dump(records)
     }
 }
