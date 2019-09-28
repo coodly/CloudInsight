@@ -14,14 +14,26 @@
 * limitations under the License.
 */
 
-#import <Foundation/Foundation.h>
+import SwiftUI
+import InsightUI
+import InsightCore
 
-//! Project version number for InsightCore.
-FOUNDATION_EXPORT double InsightCoreVersionNumber;
-
-//! Project version string for InsightCore.
-FOUNDATION_EXPORT const unsigned char InsightCoreVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <InsightCore/PublicHeader.h>
-
-
+struct AppInitialization: View {
+    @State private var initialized = false
+    
+    let application: Application
+    
+    var body: some View {
+        NavigationView {
+            if initialized {
+                MainView(application: application)                
+            } else {
+                ActivityIndicatorView(style: .large).onAppear() {
+                    self.application.initialize() {
+                        self.initialized = true
+                    }
+                }
+            }
+        }
+    }
+}

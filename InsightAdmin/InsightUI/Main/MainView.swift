@@ -14,14 +14,18 @@
 * limitations under the License.
 */
 
-#import <Foundation/Foundation.h>
+import SwiftUI
+import InsightCore
 
-//! Project version number for InsightCore.
-FOUNDATION_EXPORT double InsightCoreVersionNumber;
-
-//! Project version string for InsightCore.
-FOUNDATION_EXPORT const unsigned char InsightCoreVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <InsightCore/PublicHeader.h>
-
-
+public struct MainView: View {
+    public let application: Application
+    
+    public init(application: Application) {
+        self.application = application
+    }
+    
+    public var body: some View {
+        Text("Hello World!")
+        .navigationBarTitle("Applications")
+    }
+}

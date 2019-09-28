@@ -14,14 +14,12 @@
 * limitations under the License.
 */
 
-#import <Foundation/Foundation.h>
+import Foundation
 
-//! Project version number for InsightCore.
-FOUNDATION_EXPORT double InsightCoreVersionNumber;
-
-//! Project version string for InsightCore.
-FOUNDATION_EXPORT const unsigned char InsightCoreVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <InsightCore/PublicHeader.h>
-
-
+public class Application {
+    public static let shared = Application()
+    
+    public func initialize(completion: @escaping (() -> Void)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: completion)
+    }
+}

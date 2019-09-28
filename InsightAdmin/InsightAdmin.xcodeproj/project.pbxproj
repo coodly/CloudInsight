@@ -15,12 +15,15 @@
 		A759B7BE233E55F800FE40A6 /* InsightUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A759B7B7233E55F700FE40A6 /* InsightUI.framework */; };
 		A759B7BF233E55F800FE40A6 /* InsightUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A759B7B7233E55F700FE40A6 /* InsightUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A759B7C7233E568F00FE40A6 /* InsightCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A759B7A5233E55E900FE40A6 /* InsightCore.framework */; };
+		A759B7CF233E598200FE40A6 /* AppInitialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A759B7CE233E598200FE40A6 /* AppInitialization.swift */; };
+		A759B7D2233E5A4B00FE40A6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A759B7D1233E5A4B00FE40A6 /* ActivityIndicatorView.swift */; };
 		A77DAAF7233E490300EB109F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DAAF6233E490300EB109F /* AppDelegate.swift */; };
 		A77DAAF9233E490300EB109F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DAAF8233E490300EB109F /* SceneDelegate.swift */; };
-		A77DAAFB233E490300EB109F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DAAFA233E490300EB109F /* ContentView.swift */; };
 		A77DAAFD233E490400EB109F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77DAAFC233E490400EB109F /* Assets.xcassets */; };
 		A77DAB00233E490400EB109F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77DAAFF233E490400EB109F /* Preview Assets.xcassets */; };
 		A77DAB03233E490400EB109F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A77DAB01233E490400EB109F /* LaunchScreen.storyboard */; };
+		A7ECB8E7233F23B50025ACE7 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ECB8E6233F23B50025ACE7 /* Application.swift */; };
+		A7ECB8EA233F243C0025ACE7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ECB8E9233F243C0025ACE7 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,14 +72,17 @@
 		A759B7B7233E55F700FE40A6 /* InsightUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InsightUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A759B7B9233E55F700FE40A6 /* InsightUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsightUI.h; sourceTree = "<group>"; };
 		A759B7BA233E55F700FE40A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A759B7CE233E598200FE40A6 /* AppInitialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInitialization.swift; sourceTree = "<group>"; };
+		A759B7D1233E5A4B00FE40A6 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		A77DAAF3233E490300EB109F /* InsightAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InsightAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77DAAF6233E490300EB109F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A77DAAF8233E490300EB109F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A77DAAFA233E490300EB109F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A77DAAFC233E490400EB109F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A77DAAFF233E490400EB109F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A77DAB02233E490400EB109F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A77DAB04233E490400EB109F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7ECB8E6233F23B50025ACE7 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		A7ECB8E9233F243C0025ACE7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C85E06A07944D1CCC8EE2F47 /* Pods_InsightAdmin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InsightAdmin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0CC618372948FE83515823F /* Pods-InsightAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InsightAdmin.release.xcconfig"; path = "Target Support Files/Pods-InsightAdmin/Pods-InsightAdmin.release.xcconfig"; sourceTree = "<group>"; };
 		D420F83FDDA4374513C81987 /* Pods-InsightAdmin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InsightAdmin.debug.xcconfig"; path = "Target Support Files/Pods-InsightAdmin/Pods-InsightAdmin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 		A759B7A6233E55E900FE40A6 /* InsightCore */ = {
 			isa = PBXGroup;
 			children = (
+				A7ECB8E5233F239E0025ACE7 /* Application */,
 				A759B7C4233E562A00FE40A6 /* Supporting files */,
 			);
 			path = InsightCore;
@@ -131,7 +138,9 @@
 		A759B7B8233E55F700FE40A6 /* InsightUI */ = {
 			isa = PBXGroup;
 			children = (
+				A7ECB8E8233F24320025ACE7 /* Main */,
 				A759B7C3233E561C00FE40A6 /* Supporting files */,
+				A759B7D0233E5A3400FE40A6 /* Views */,
 			);
 			path = InsightUI;
 			sourceTree = "<group>";
@@ -152,6 +161,22 @@
 				A759B7A8233E55E900FE40A6 /* Info.plist */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		A759B7CD233E597100FE40A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A759B7CE233E598200FE40A6 /* AppInitialization.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A759B7D0233E5A3400FE40A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A759B7D1233E5A4B00FE40A6 /* ActivityIndicatorView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A77DAAEA233E490300EB109F = {
@@ -179,9 +204,9 @@
 		A77DAAF5233E490300EB109F /* InsightAdmin */ = {
 			isa = PBXGroup;
 			children = (
+				A759B7CD233E597100FE40A6 /* Views */,
 				A77DAAF6233E490300EB109F /* AppDelegate.swift */,
 				A77DAAF8233E490300EB109F /* SceneDelegate.swift */,
-				A77DAAFA233E490300EB109F /* ContentView.swift */,
 				A77DAAFC233E490400EB109F /* Assets.xcassets */,
 				A77DAB01233E490400EB109F /* LaunchScreen.storyboard */,
 				A77DAB04233E490400EB109F /* Info.plist */,
@@ -196,6 +221,22 @@
 				A77DAAFF233E490400EB109F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A7ECB8E5233F239E0025ACE7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A7ECB8E6233F23B50025ACE7 /* Application.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A7ECB8E8233F24320025ACE7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A7ECB8E9233F243C0025ACE7 /* MainView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		BA3979BAFECCC252AED2174E /* Frameworks */ = {
@@ -299,6 +340,7 @@
 				TargetAttributes = {
 					A759B7A4233E55E900FE40A6 = {
 						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
 					};
 					A759B7B6233E55F700FE40A6 = {
 						CreatedOnToolsVersion = 11.1;
@@ -403,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7ECB8E7233F23B50025ACE7 /* Application.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +453,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A759B7D2233E5A4B00FE40A6 /* ActivityIndicatorView.swift in Sources */,
+				A7ECB8EA233F243C0025ACE7 /* MainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +464,7 @@
 			files = (
 				A77DAAF7233E490300EB109F /* AppDelegate.swift in Sources */,
 				A77DAAF9233E490300EB109F /* SceneDelegate.swift in Sources */,
-				A77DAAFB233E490300EB109F /* ContentView.swift in Sources */,
+				A759B7CF233E598200FE40A6 /* AppInitialization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +503,7 @@
 		A759B7AF233E55EA00FE40A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -477,6 +523,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -487,6 +534,7 @@
 		A759B7B0233E55EA00FE40A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -688,6 +736,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D420F83FDDA4374513C81987 /* Pods-InsightAdmin.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"InsightAdmin/Preview Content\"";
@@ -709,6 +758,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0CC618372948FE83515823F /* Pods-InsightAdmin.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"InsightAdmin/Preview Content\"";
