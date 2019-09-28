@@ -32,8 +32,9 @@ public class Insight: Injector, Dependencies {
         return "\(version)(\(build))"
     }()
     
-    internal init(container: CKContainer) {
+    internal init(container: CKContainer, persistentData: Bool = false) {
         Logging.log("Start with \(String(describing: container.containerIdentifier))")
         Injection.shared.container = container
+        Injection.shared.persistenceFolder = persistentData ? .documentDirectory : .cachesDirectory
     }
 }

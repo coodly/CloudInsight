@@ -84,8 +84,9 @@ internal class Injection {
         let modelBundleURL = frameworkBundle.url(forResource: "CloudInsight", withExtension: "bundle")!
         let modelBundle = Bundle(url: modelBundleURL)!
         
-        return CorePersistence(modelName: "CloudInsight", identifier: "com.coodly.insight", bundle: modelBundle, in: .cachesDirectory, wipeOnConflict: true)
+        return CorePersistence(modelName: "CloudInsight", identifier: "com.coodly.insight", bundle: modelBundle, in: persistenceFolder, wipeOnConflict: true)
     }()
+    internal var persistenceFolder: FileManager.SearchPathDirectory = .cachesDirectory
     
     internal var userRecordID: CKRecord.ID?
     

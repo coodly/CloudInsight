@@ -23,7 +23,7 @@ public protocol InsightReporting {
 extension Insight: InsightReporting {
     public static func reporting(on container: CKContainer) -> InsightReporting {
         Logging.log("Reportin on \(container)")
-        return Insight(container: container)
+        return Insight(container: container, persistentData: true)
     }
     
     public func load(completion: @escaping (() -> Void)) {
@@ -37,7 +37,19 @@ extension Insight: InsightReporting {
         }
         loadPersistence.onCompletion(callback: callback)
         
+        let updates = BlockOperation(block: fetchUpdates)
+        updates.addDependency(loadPersistence)
+        
         inject(into: loadPersistence)
-        queue.addOperation(loadPersistence)
+        queue.addOperations([loadPersistence, updates], waitUntilFinished: false)
+    }
+    
+    private func fetchUpdates() {
+        var operations = [Operation]()
+        operations.add(operation: PullDevicesOperation())
+        operations.add(operation: PullEventsOperation())
+        
+        operations.forEach({ inject(into: $0) })
+        queue.addOperations(operations, waitUntilFinished: false)
     }
 }
