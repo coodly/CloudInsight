@@ -3,6 +3,7 @@
     <entity name="Application" representedClassName=".Application" syncable="YES">
         <attribute name="identifier" attributeType="String"/>
         <attribute name="newUsersToday" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sessions" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="devices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Device" inverseName="application" inverseEntity="Device"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="User" inverseName="application" inverseEntity="User"/>
     </entity>
@@ -42,7 +43,7 @@
         <relationship name="devices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Device" inverseName="user" inverseEntity="Device"/>
     </entity>
     <elements>
-        <element name="Application" positionX="-45" positionY="54" width="128" height="103"/>
+        <element name="Application" positionX="-45" positionY="54" width="128" height="118"/>
         <element name="Device" positionX="-63" positionY="18" width="128" height="178"/>
         <element name="Event" positionX="-63" positionY="-18" width="128" height="148"/>
         <element name="Setting" positionX="-54" positionY="45" width="128" height="73"/>

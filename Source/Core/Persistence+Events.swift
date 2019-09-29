@@ -53,4 +53,20 @@ extension NSManagedObjectContext {
             saved.values = event.values
         }
     }
+    
+    internal func countSessions(on date: Date, for app: Application) -> Int {
+        let start = Calendar.current.startOfDay(for: date)
+        guard let end = Calendar.current.date(byAdding: .day, value: 1, to: start) else {
+            return 0
+        }
+        
+        let appPredicate = NSPredicate(format: "device.application = %@", app)
+        let startPredicate = NSPredicate(format: "time >= %@", start as NSDate)
+        let endPredicate = NSPredicate(format: "time < %@", end as NSDate)
+        let periodPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [startPredicate, endPredicate])
+        let sessionStartPredicate = NSPredicate(format: "name = 'insight.session.start'")
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [appPredicate, sessionStartPredicate, periodPredicate])
+        return count(instancesOf: Event.self, predicate: predicate)
+    }
+
 }

@@ -20,6 +20,7 @@ import CoreData
 public class Application: NSManagedObject {
     @NSManaged public var identifier: String
     @NSManaged public var newUsersToday: NSNumber
+    @NSManaged public var sessions: NSNumber
     
     @NSManaged var devices: Set<Device>?
     @NSManaged var users: Set<User>?

@@ -16,6 +16,7 @@ struct ApplicationSummaryView: View {
         VStack {
             Text(app.identifier)
             Text("New users: \(app.newUsersToday)")
+            Text("Sessions: \(app.sessions)")
         }
     }
 }

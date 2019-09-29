@@ -22,6 +22,7 @@ extension NSManagedObjectContext {
         let apps: [Application] = fetch()
         for app in apps {
             app.newUsersToday = NSNumber(value: countOfDevicesCreate(on: Date(), for: app))
+            app.sessions = NSNumber(value: countSessions(on: Date(), for: app))
         }
     }
 }
