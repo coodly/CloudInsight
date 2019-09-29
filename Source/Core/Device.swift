@@ -20,6 +20,7 @@ import CoreData
 internal class Device: NSManagedObject, Synced {
     @NSManaged var model: String?
     @NSManaged var osVersion: String?
+    @NSManaged var createdOn: Date?
     
     @NSManaged var recordName: String?
     @NSManaged var recordData: Data?

@@ -34,6 +34,7 @@ extension Cloud {
         var appIdentifier: String?
         var modifiedAt: Date?
         var createdBy: CKRecord.ID?
+        var createdOn: Date?
         
         mutating func loadFields(from record: CKRecord) -> Bool {
             model = record["model"] as? String
@@ -42,6 +43,7 @@ extension Cloud {
             
             modifiedAt = record.modificationDate
             createdBy = record.creatorUserRecordID
+            createdOn = record.creationDate
             
             return true
         }

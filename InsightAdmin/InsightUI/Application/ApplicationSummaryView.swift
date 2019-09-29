@@ -13,6 +13,9 @@ struct ApplicationSummaryView: View {
     let app: CloudInsight.Application
     
     var body: some View {
-        Text(app.identifier)
+        VStack {
+            Text(app.identifier)
+            Text("New users: \(app.newUsersToday)")
+        }
     }
 }

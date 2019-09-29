@@ -20,5 +20,6 @@ import CoreData
 internal class PullEventsOperation: PullUpdatesOperation<Cloud.Event> {
     override func load(records: [Cloud.Event], into context: NSManagedObjectContext) {
         context.load(events: records)
+        context.updateStatistics()
     }
 }

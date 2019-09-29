@@ -17,10 +17,11 @@
 import Foundation
 import CoreData
 
-public class Application: NSManagedObject {
-    @NSManaged public var identifier: String
-    @NSManaged public var newUsersToday: NSNumber
-    
-    @NSManaged var devices: Set<Device>?
-    @NSManaged var users: Set<User>?
+extension NSManagedObjectContext {
+    internal func updateStatistics() {
+        let apps: [Application] = fetch()
+        for app in apps {
+            app.newUsersToday = NSNumber(value: countOfDevicesCreate(on: Date(), for: app))
+        }
+    }
 }

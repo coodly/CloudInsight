@@ -69,6 +69,7 @@ extension NSManagedObjectContext {
             } else {
                 saved = insertEntity()
                 saved.recordName = device.recordName
+                saved.createdOn = device.createdOn
             }
             
             let application = applications.first(where: { $0.identifier == device.appIdentifier })
@@ -80,5 +81,19 @@ extension NSManagedObjectContext {
             saved.user = user
             user?.application = application
         }
+    }
+    
+    internal func countOfDevicesCreate(on date: Date, for app: Application) -> Int {
+        let start = Calendar.current.startOfDay(for: date)
+        guard let end = Calendar.current.date(byAdding: .day, value: 1, to: start) else {
+            return 0
+        }
+        
+        let appPredicate = NSPredicate(format: "application = %@", app)
+        let startPredicate = NSPredicate(format: "createdOn >= %@", start as NSDate)
+        let endPredicate = NSPredicate(format: "createdOn < %@", end as NSDate)
+        let periodPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [startPredicate, endPredicate])
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [appPredicate, periodPredicate])
+        return count(instancesOf: Device.self, predicate: predicate)
     }
 }

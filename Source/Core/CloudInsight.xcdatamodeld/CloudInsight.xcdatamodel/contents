@@ -2,10 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Application" representedClassName=".Application" syncable="YES">
         <attribute name="identifier" attributeType="String"/>
+        <attribute name="newUsersToday" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="devices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Device" inverseName="application" inverseEntity="Device"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="User" inverseName="application" inverseEntity="User"/>
     </entity>
     <entity name="Device" representedClassName=".Device" syncable="YES">
+        <attribute name="createdOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="model" optional="YES" attributeType="String"/>
         <attribute name="osVersion" optional="YES" attributeType="String"/>
         <attribute name="recordData" optional="YES" attributeType="Binary"/>
@@ -40,8 +42,8 @@
         <relationship name="devices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Device" inverseName="user" inverseEntity="Device"/>
     </entity>
     <elements>
-        <element name="Application" positionX="-45" positionY="54" width="128" height="88"/>
-        <element name="Device" positionX="-63" positionY="18" width="128" height="163"/>
+        <element name="Application" positionX="-45" positionY="54" width="128" height="103"/>
+        <element name="Device" positionX="-63" positionY="18" width="128" height="178"/>
         <element name="Event" positionX="-63" positionY="-18" width="128" height="148"/>
         <element name="Setting" positionX="-54" positionY="45" width="128" height="73"/>
         <element name="SyncStatus" positionX="-54" positionY="-9" width="128" height="105"/>
