@@ -11,15 +11,17 @@
         <attribute name="recordData" optional="YES" attributeType="Binary"/>
         <attribute name="recordName" optional="YES" attributeType="String"/>
         <relationship name="application" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Application" inverseName="devices" inverseEntity="Application"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="device" inverseEntity="Event"/>
         <relationship name="syncStatus" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SyncStatus" inverseName="device" inverseEntity="SyncStatus"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="devices" inverseEntity="User"/>
     </entity>
     <entity name="Event" representedClassName=".Event" syncable="YES">
-        <attribute name="device" optional="YES" attributeType="String"/>
+        <attribute name="deviceIdentifier" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="recordName" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="values" optional="YES" attributeType="String"/>
+        <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Device" inverseName="events" inverseEntity="Device"/>
         <relationship name="syncStatus" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SyncStatus" inverseName="event" inverseEntity="SyncStatus"/>
     </entity>
     <entity name="Setting" representedClassName=".Setting" syncable="YES">
@@ -39,8 +41,8 @@
     </entity>
     <elements>
         <element name="Application" positionX="-45" positionY="54" width="128" height="88"/>
-        <element name="Device" positionX="-63" positionY="18" width="128" height="148"/>
-        <element name="Event" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Device" positionX="-63" positionY="18" width="128" height="163"/>
+        <element name="Event" positionX="-63" positionY="-18" width="128" height="148"/>
         <element name="Setting" positionX="-54" positionY="45" width="128" height="73"/>
         <element name="SyncStatus" positionX="-54" positionY="-9" width="128" height="105"/>
         <element name="User" positionX="-36" positionY="72" width="128" height="88"/>

@@ -1,4 +1,6 @@
 PODS:
+  - CloudInsight/Client (0.1.2):
+    - CloudInsight/Core
   - CloudInsight/Core (0.1.2):
     - CoreDataPersistence (= 0.2.1)
     - KeychainAccess (= 3.2.0)
@@ -17,6 +19,7 @@ PODS:
     - Puff/Logger
 
 DEPENDENCIES:
+  - CloudInsight/Client (from `../`)
   - CloudInsight/Reporting (from `../`)
 
 SPEC REPOS:
@@ -36,6 +39,6 @@ SPEC CHECKSUMS:
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Puff: f796a20bebacea50c5c51a3c4e75e7171fb1395d
 
-PODFILE CHECKSUM: 0bf389fa862e82b20d197190b95ed5d07b0d8c78
+PODFILE CHECKSUM: f0b37cf74c4dd9f95641116c56dc04859030d78c
 
 COCOAPODS: 1.8.0

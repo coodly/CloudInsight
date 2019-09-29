@@ -12,4 +12,5 @@ target 'InsightCore' do
     platform :ios, '13.1'
 
     pod 'CloudInsight/Reporting', :path => '../'
+    pod 'CloudInsight/Client', :path => '../'
 end

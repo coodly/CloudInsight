@@ -22,7 +22,8 @@ internal class Event: NSManagedObject, Synced {
     @NSManaged var time: Date?
     @NSManaged var name: String?
     @NSManaged var values: String?
-    @NSManaged var device: String?
+    @NSManaged var deviceIdentifier: String?
     
     @NSManaged var syncStatus: SyncStatus?
+    @NSManaged var device: Device?
 }

@@ -54,7 +54,7 @@ extension Event {
     internal func toCloud() -> Cloud.Event {
         var event = Cloud.Event()
         event.recordName = recordName
-        event.device = device
+        event.device = deviceIdentifier
         event.time = time
         event.name = name
         event.values = values

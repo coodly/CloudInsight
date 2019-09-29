@@ -26,7 +26,8 @@ internal class Device: NSManagedObject, Synced {
     
     @NSManaged var syncStatus: SyncStatus?
     @NSManaged var application: Application?
-    @NSManaged var user: User?
+    @NSManaged var user: User?    
+    @NSManaged var events: Set<Event>?
 }
 
 extension Device {

@@ -35,4 +35,22 @@ extension NSManagedObjectContext {
         let failed: [Event] = fetch(predicate: predicate)
         failed.forEach({ $0.markSyncFailed() })
     }
+    
+    internal func load(events: [Cloud.Event]) {
+        let deviceIds = Set(events.compactMap({ $0.device }))
+        let devices = self.devices(with: Array(deviceIds))
+        
+        for event in events {
+            guard let device = devices.first(where: { $0.recordName == event.device }) else {
+                continue
+            }
+            
+            let saved: Event = insertEntity()
+            saved.device = device
+            saved.recordName = event.recordName
+            saved.name = event.name
+            saved.time = event.time
+            saved.values = event.values
+        }
+    }
 }

@@ -40,7 +40,7 @@ internal class LogEventOperation: ConcurrentOperation, Dependencies {
             let event: Event = context.insertEntity()
             
             event.recordName = UUID().uuidString
-            event.device = keychain.deviceId
+            event.deviceIdentifier = keychain.deviceId
             event.name = eventName
             event.time = time
             if values.count > 0, let data = try? JSONSerialization.data(withJSONObject: values, options: []), let string = String(data: data, encoding: .utf8) {
