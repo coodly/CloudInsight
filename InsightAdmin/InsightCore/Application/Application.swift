@@ -30,4 +30,8 @@ public class Application {
     public func initialize(completion: @escaping (() -> Void)) {
         reporting.load(completion: completion)
     }
+    
+    public func applicationsList() -> FetchedObjectsViewModel<CloudInsight.Application> {
+        return FetchedObjectsViewModel(controller: reporting.fetchedControllerForApplications())
+    }
 }

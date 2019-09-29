@@ -25,7 +25,7 @@ public struct MainView: View {
     }
     
     public var body: some View {
-        Text("Hello World!")
+        ApplicationsList(viewModel: application.applicationsList())
         .navigationBarTitle("Applications")
     }
 }

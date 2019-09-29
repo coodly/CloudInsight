@@ -15,12 +15,14 @@
  */
 
 import CloudKit
+import CoreDataPersistence
 
-private typealias Dependencies = InsightQueueConsumer & DataPushConsumer
+private typealias Dependencies = InsightQueueConsumer & DataPushConsumer & PersistenceConsumer
 
 public class Insight: Injector, Dependencies {
     var queue: OperationQueue!
     var push: DataPush!
+    var persistence: CorePersistence!
     
     internal var sessionID = UUID()
     internal lazy var appVersion: String = {

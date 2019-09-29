@@ -14,12 +14,21 @@
 * limitations under the License.
 */
 
-import Foundation
-import CoreData
+import SwiftUI
+import InsightCore
+import CloudInsight
+import Combine
 
-public class Application: NSManagedObject {
-    @NSManaged public var identifier: String
+struct ApplicationsList: View {
+    @ObservedObject var viewModel: FetchedObjectsViewModel<CloudInsight.Application>
     
-    @NSManaged var devices: Set<Device>?
-    @NSManaged var users: Set<User>?
+    var body: some View {
+        List {
+            ForEach(viewModel.fetchedObjects, id: \.objectID) {
+                app in
+                
+                ApplicationSummaryView(app: app)
+            }
+        }
+    }
 }

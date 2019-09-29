@@ -15,9 +15,12 @@
 */
 
 import CloudKit
+import CoreData
+import CoreDataPersistence
 
 public protocol InsightReporting {
     func load(completion: @escaping (() -> Void))
+    func fetchedControllerForApplications() -> NSFetchedResultsController<Application>
 }
 
 extension Insight: InsightReporting {
@@ -51,5 +54,9 @@ extension Insight: InsightReporting {
         
         operations.forEach({ inject(into: $0) })
         queue.addOperations(operations, waitUntilFinished: false)
+    }
+    
+    public func fetchedControllerForApplications() -> NSFetchedResultsController<Application> {
+        return persistence.mainContext.fetchedControllerForApplications()        
     }
 }

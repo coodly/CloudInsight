@@ -3,6 +3,11 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 
+def insight_pods
+  pod 'CloudInsight/Reporting', :path => '../'
+  pod 'CloudInsight/Client', :path => '../'
+end
+
 target 'InsightAdmin' do
     platform :ios, '13.1'
 
@@ -10,7 +15,12 @@ end
 
 target 'InsightCore' do
     platform :ios, '13.1'
+    
+    insight_pods
+end
 
-    pod 'CloudInsight/Reporting', :path => '../'
-    pod 'CloudInsight/Client', :path => '../'
+target 'InsightUI' do
+    platform :ios, '13.1'
+    
+    insight_pods
 end

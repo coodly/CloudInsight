@@ -42,4 +42,9 @@ extension NSManagedObjectContext {
         
         return existing + created
     }
+    
+    internal func fetchedControllerForApplications() -> NSFetchedResultsController<Application> {
+        let sort = NSSortDescriptor(key: "identifier", ascending: true)
+        return fetchedController(sort: [sort])
+    }
 }
