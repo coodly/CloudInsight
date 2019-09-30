@@ -40,14 +40,18 @@ extension Insight: InsightReporting {
         }
         loadPersistence.onCompletion(callback: callback)
         
-        let updates = BlockOperation(block: fetchUpdates)
+        let updates = BlockOperation() {
+            self.fetchUpdates()
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(self.fetchUpdates), name: UIApplication.didBecomeActiveNotification, object: nil)
+        }
         updates.addDependency(loadPersistence)
         
         inject(into: loadPersistence)
         queue.addOperations([loadPersistence, updates], waitUntilFinished: false)
     }
     
-    private func fetchUpdates() {
+    @objc fileprivate func fetchUpdates() {
         var operations = [Operation]()
         operations.add(operation: PullDevicesOperation())
         operations.add(operation: PullEventsOperation())
