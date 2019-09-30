@@ -27,7 +27,7 @@ struct ApplicationsList: View {
             ForEach(viewModel.fetchedObjects, id: \.objectID) {
                 app in
                 
-                ApplicationSummaryView(app: app)
+                ApplicationSummaryView(viewModel: ApplicationSummaryViewModel(app: app))
             }
         }
     }

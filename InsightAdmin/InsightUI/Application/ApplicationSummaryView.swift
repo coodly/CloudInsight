@@ -10,13 +10,13 @@ import SwiftUI
 import CloudInsight
 
 struct ApplicationSummaryView: View {
-    let app: CloudInsight.Application
+    @ObservedObject var viewModel: ApplicationSummaryViewModel
     
     var body: some View {
         VStack {
-            Text(app.identifier)
-            Text("New users: \(app.newUsersToday)")
-            Text("Sessions: \(app.sessions)")
+            Text(viewModel.identifier)
+            Text("New users: \(viewModel.formattedUsersToday)")
+            Text("Sessions: \(viewModel.formattedSessionsToday)")
         }
     }
 }
