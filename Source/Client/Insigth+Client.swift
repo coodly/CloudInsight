@@ -55,12 +55,12 @@ extension Insight: InsightClient {
     
     @objc fileprivate func didBecomeActive() {
         Logging.log("Did become active")
-        log(event: "insight.session.start", values: ["id": sessionID.uuidString, "appVersion": appVersion])
+        log(event: .sessionStart, values: [.sessionId: sessionID.uuidString, .appVersion: appVersion])
     }
 
     @objc fileprivate func didEnterBackground() {
         Logging.log("Did enter background")
-        log(event: "insight.session.end", values: ["id": sessionID.uuidString])
+        log(event: .sessionEnd, values: [.sessionId: sessionID.uuidString])
         sessionID = UUID()
     }
     

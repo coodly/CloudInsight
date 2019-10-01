@@ -64,7 +64,7 @@ extension NSManagedObjectContext {
         let startPredicate = NSPredicate(format: "time >= %@", start as NSDate)
         let endPredicate = NSPredicate(format: "time < %@", end as NSDate)
         let periodPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [startPredicate, endPredicate])
-        let sessionStartPredicate = NSPredicate(format: "name = %@", "insight.session.start" as NSString)
+        let sessionStartPredicate = NSPredicate(format: "name = %@", String.sessionStart as NSString)
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [appPredicate, sessionStartPredicate, periodPredicate])
         return count(instancesOf: Event.self, predicate: predicate)
     }
