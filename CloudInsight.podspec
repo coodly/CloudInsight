@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
     core.dependency 'CoreDataPersistence', '0.2.1'
     core.dependency 'Puff/Core', '0.5.6'
     core.dependency 'Puff/CoreData', '0.5.6'
-    core.dependency 'KeychainAccess', '3.2.0'
+    core.dependency 'KeychainAccess', '4.1.0'
     
     core.resource_bundle = {'CloudInsight' => 'Source/Core/CloudInsight.xcdatamodeld'}
   end
