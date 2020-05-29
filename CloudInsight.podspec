@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'CloudInsight'
-  s.version = '0.1.3'
+  s.version = '0.1.4'
   s.license = 'Apache 2'
   s.summary = 'Light analytics on top of CloudKit'
   s.homepage = 'https://github.com/coodly/CloudInsight'
