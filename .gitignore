@@ -3,3 +3,6 @@ project.xcworkspace
 xcuserdata
 xcshareddata
 Pods
+InsightCommands/.swiftpm
+InsightCommands/Config
+InsightCommands/.build

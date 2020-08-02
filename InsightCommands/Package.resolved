@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
+        "state": {
+          "branch": null,
+          "revision": "7255fd547f70468e19abbac5f7964f1ef309ad92",
+          "version": "0.2.1"
+        }
+      },
+      {
+        "package": "swift-crypto",
+        "repositoryURL": "https://github.com/apple/swift-crypto.git",
+        "state": {
+          "branch": null,
+          "revision": "9b9d1868601a199334da5d14f4ab2d37d4f8d0c5",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "SWLogger",
+        "repositoryURL": "https://github.com/coodly/swlogger.git",
+        "state": {
+          "branch": null,
+          "revision": "b26e4fd01ef133f41b065e91e03caad5ec4a7ad2",
+          "version": "0.4.3"
+        }
+      },
+      {
+        "package": "TalkToCloud",
+        "repositoryURL": "https://github.com/coodly/TalkToCloud.git",
+        "state": {
+          "branch": null,
+          "revision": "6256511b8e724eda4136533bc43a3b773b42bb63",
+          "version": "0.10.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
