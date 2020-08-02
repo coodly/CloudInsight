@@ -57,7 +57,7 @@ struct Command: ParsableCommand {
     func run() throws {
         let fetch = Fetch()
         
-        let config = Configuration(containerId: "com.coodly.moviez")
+        let config = Configuration(containerId: "com.coodly.insight")
         let container: CloudContainer
         if development {
             container = config.developmentContainer(with: fetch)
@@ -66,6 +66,9 @@ struct Command: ParsableCommand {
         } else {
             fatalError("No environment selected")
         }
+        
+        let remove = Remove(keep: days, container: container)
+        remove.execute()
     }
 }
 
