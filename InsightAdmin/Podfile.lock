@@ -1,21 +1,21 @@
 PODS:
-  - CloudInsight/Client (0.1.2):
+  - CloudInsight/Client (0.1.5):
     - CloudInsight/Core
-  - CloudInsight/Core (0.1.2):
+  - CloudInsight/Core (0.1.5):
     - CoreDataPersistence (= 0.2.1)
-    - KeychainAccess (= 3.2.0)
-    - Puff/Core (= 0.5.6)
-    - Puff/CoreData (= 0.5.6)
-  - CloudInsight/Reporting (0.1.2):
+    - KeychainAccess (= 4.1.0)
+    - Puff/Core (= 0.6.0)
+    - Puff/CoreData (= 0.6.0)
+  - CloudInsight/Reporting (0.1.5):
     - CloudInsight/Core
   - CoreDataPersistence (0.2.1)
-  - KeychainAccess (3.2.0)
-  - Puff/Core (0.5.6):
+  - KeychainAccess (4.1.0)
+  - Puff/Core (0.6.0):
     - Puff/Logger
     - Puff/Serialization
-  - Puff/CoreData (0.5.6)
-  - Puff/Logger (0.5.6)
-  - Puff/Serialization (0.5.6):
+  - Puff/CoreData (0.6.0)
+  - Puff/Logger (0.6.0)
+  - Puff/Serialization (0.6.0):
     - Puff/Logger
 
 DEPENDENCIES:
@@ -23,7 +23,7 @@ DEPENDENCIES:
   - CloudInsight/Reporting (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/CocoaPods/Specs:
     - KeychainAccess
   https://github.com/coodly/Specs.git:
     - CoreDataPersistence
@@ -34,11 +34,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CloudInsight: 283384c346caa7bdf4fdef3650e49e9e88871b66
+  CloudInsight: bbca5f876a67a75f5b35e755a9e72ad14b15964b
   CoreDataPersistence: ea9d57c4650ae4c3a66b4020e36f61f3026b36e4
-  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
-  Puff: f796a20bebacea50c5c51a3c4e75e7171fb1395d
+  KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
+  Puff: c47402c40261fc55c277075478cc9f9581f21a68
 
 PODFILE CHECKSUM: 01b021afe0ee053a71e660df2d06bbdbceb83042
 
-COCOAPODS: 1.8.0
+COCOAPODS: 1.9.3
